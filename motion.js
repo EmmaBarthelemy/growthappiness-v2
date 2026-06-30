@@ -19,7 +19,22 @@
     dot.style.transform = 'translate(' + (mx - 4) + 'px,' + (my - 4) + 'px)';
     ring.style.transform = 'translate(' + (rx - 19) + 'px,' + (ry - 19) + 'px)';
     requestAnimationFrame(animCursor);
-  })();
+  
+  /* ── 12. DASHBOARD REVEAL + PARALLAX ──────────────────────── */
+  const dashOuter = document.querySelector('.hero-dash-outer');
+  if (dashOuter) {
+    // Reveal on load with slight delay
+    setTimeout(() => dashOuter.classList.add('in'), 600);
+
+    // Parallax: moves up as you scroll (like premiercs)
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const rate = scrollY * 0.35;
+      dashOuter.style.transform = 'translateY(' + (-rate) + 'px)';
+    }, { passive: true });
+  }
+
+})();
 
   document.querySelectorAll('a,button,.cap,.pain,.form-card,.quote,.step').forEach(el => {
     el.addEventListener('mouseenter', () => ring.classList.add('hover'));
