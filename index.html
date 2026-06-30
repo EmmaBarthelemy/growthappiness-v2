@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Growthappiness · On accompagne vos projets, vous gardez le cap</title>
-<meta name="description" content="Vous avez un projet mais quelque chose vous bloque ? On vous accompagne de l'idee au lancement avec l'IA. Diagnostic offert, 30 min, sans engagement.">
+<title>Growthappiness · On leve ce qui vous bloque, avec l'IA</title>
+<meta name="description" content="Vous avez un projet mais quelque chose vous bloque ? On vous accompagne de l'idee au lancement avec l'IA. Diagnostic offert 30 min, sans engagement.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#15140f;--ink-soft:#4a4842;--paper:#f3efe6;--paper-2:#ece6d9;
   --card:#ffffff;--line:#ddd6c6;--line-soft:#e7e1d3;
   --accent:#e0552f;--accent-deep:#b13d1c;--accent-soft:#f7e8df;
-  --leaf:#1d6e56;--leaf-soft:#e1f0e9;--radius:14px;--maxw:1140px;
+  --leaf:#1d6e56;--leaf-soft:#e1f0e9;--gold:#c08a2d;
+  --radius:14px;--maxw:1140px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -21,179 +22,220 @@ body{font-family:"Inter",system-ui,sans-serif;color:var(--ink);background:var(--
 h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:500;line-height:1.08;letter-spacing:-.01em}
 em{font-style:italic;color:var(--accent)}
 a{color:inherit;text-decoration:none}
-img{max-width:100%}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--accent-deep)}
 
 /* BUTTONS */
-.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;padding:13px 24px;border-radius:999px;transition:.18s;border:1.5px solid transparent;cursor:pointer;font-family:inherit}
-.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-.btn-primary:hover{background:var(--accent-deep);border-color:var(--accent-deep);transform:translateY(-1px)}
-.btn-ghost{background:transparent;border-color:var(--ink);color:var(--ink)}
-.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;padding:14px 26px;border-radius:999px;transition:.18s;border:1.5px solid transparent;cursor:pointer;font-family:inherit;white-space:nowrap}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 4px 20px rgba(224,85,47,.3)}
+.btn-primary:hover{background:var(--accent-deep);border-color:var(--accent-deep);transform:translateY(-1px);box-shadow:0 6px 28px rgba(224,85,47,.4)}
+.btn-ghost{background:transparent;border-color:rgba(21,20,15,.25);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .btn-arrow::after{content:" →";font-weight:400}
+.btn-sm{font-size:13px;padding:10px 18px}
 
 /* HEADER */
-header{position:sticky;top:0;z-index:50;background:rgba(243,239,230,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-.logo{font-family:"Fraunces",serif;font-weight:600;font-size:22px;letter-spacing:-.02em}
+header{position:sticky;top:0;z-index:50;background:rgba(243,239,230,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{font-family:"Fraunces",serif;font-weight:600;font-size:21px;letter-spacing:-.02em}
 .logo span{color:var(--accent)}
-.nav-links{display:flex;gap:28px;font-size:14px;font-weight:500}
+.nav-links{display:flex;gap:26px;font-size:14px;font-weight:500}
 .nav-links a{color:var(--ink-soft);transition:color .15s}
 .nav-links a:hover{color:var(--ink)}
-.nav-cta{display:flex;align-items:center;gap:12px}
+.nav-cta{display:flex;align-items:center;gap:10px}
 @media(max-width:900px){.nav-links{display:none}.nav-cta .btn-ghost{display:none}}
 
 /* HERO */
-.hero{padding:90px 0 70px;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center}
-.hero .eyebrow{margin-bottom:20px;display:block}
-.hero h1{font-size:clamp(38px,5vw,62px);margin-bottom:22px}
-.hero .lead{font-size:18px;color:var(--ink-soft);max-width:32em;margin-bottom:34px;line-height:1.7}
+.hero{padding:72px 0 56px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero-social-proof{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.avatars{display:flex}
+.avatars span{width:32px;height:32px;border-radius:50%;border:2px solid var(--paper);background:var(--paper-2);display:flex;align-items:center;justify-content:center;font-size:13px;margin-left:-8px}
+.avatars span:first-child{margin-left:0}
+.proof-text{font-size:13px;color:var(--ink-soft)}
+.proof-text strong{color:var(--ink)}
+.hero h1{font-size:clamp(36px,4.8vw,60px);margin-bottom:20px}
+.hero h1 .accent-word{color:var(--accent);font-style:italic}
+.hero .lead{font-size:17px;color:var(--ink-soft);max-width:30em;margin-bottom:32px;line-height:1.72}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.hero-note{margin-top:20px;font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:9px}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--leaf);box-shadow:0 0 0 4px var(--leaf-soft);flex-shrink:0}
-.reco{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 30px;box-shadow:0 20px 50px -30px rgba(20,20,15,.25),0 1px 0 0 rgba(255,255,255,.8) inset}
-.reco .tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--leaf);margin-bottom:18px}
-.reco h3{font-size:19px;margin-bottom:8px}
-.reco .sub-reco{font-size:13.5px;color:var(--ink-soft);margin-bottom:4px}
-.reco-step{display:flex;gap:13px;padding:14px 0;border-top:1px solid var(--line-soft)}
-.reco-num{flex:none;width:27px;height:27px;border-radius:50%;background:var(--accent-soft);color:var(--accent-deep);font-weight:600;font-size:13px;display:flex;align-items:center;justify-content:center}
-.reco-step p{font-size:13.5px;line-height:1.5;color:var(--ink-soft)}
-.reco-step strong{color:var(--ink)}
-@media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+.hero-note{margin-top:18px;font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:8px}
+.dot-live{width:7px;height:7px;border-radius:50%;background:var(--leaf);box-shadow:0 0 0 3px var(--leaf-soft);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px var(--leaf-soft)}50%{box-shadow:0 0 0 6px var(--leaf-soft)}}
+/* Hero card */
+.hero-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 30px;box-shadow:0 24px 60px -30px rgba(20,18,10,.28)}
+.hero-card .card-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--leaf);margin-bottom:16px}
+.hero-card h3{font-size:18px;margin-bottom:6px}
+.hero-card .card-sub{font-size:13px;color:var(--ink-soft);margin-bottom:18px}
+.step-row{display:flex;gap:13px;padding:14px 0;border-top:1px solid var(--line-soft)}
+.step-row:first-of-type{border-top:none;padding-top:0}
+.step-n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent-deep);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}
+.step-row p{font-size:13.5px;line-height:1.5;color:var(--ink-soft)}
+.step-row strong{color:var(--ink)}
+.hero-card .card-cta{display:flex;align-items:center;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid var(--line-soft)}
+.hero-card .card-cta span{font-size:12.5px;color:var(--ink-soft)}
+@media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:36px}}
 
-/* STRIP */
-.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2);overflow:hidden;padding:15px 0}
+/* TRUST BAR */
+.trust-bar{background:var(--ink);padding:20px 0}
+.trust-inner{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:10px;color:#b8b3a6}
+.trust-item .val{font-family:"Fraunces",serif;font-size:26px;color:var(--accent);font-weight:500}
+.trust-item .lbl{font-size:13px;line-height:1.3;max-width:10em}
+.trust-sep{width:1px;height:36px;background:#2e2b1f}
+@media(max-width:680px){.trust-sep{display:none}.trust-inner{gap:28px}}
+
+/* CAPABILITY STRIP */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2);overflow:hidden;padding:14px 0}
 .strip-track{display:flex;gap:44px;white-space:nowrap;animation:scroll 30s linear infinite;font-family:"Fraunces",serif;font-size:16px;color:var(--ink-soft)}
 .strip-track span{display:inline-flex;align-items:center;gap:44px}
 .strip-track b{color:var(--accent);font-weight:500}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
-/* SECTIONS */
-section{padding:90px 0}
-.sec-head{max-width:38em;margin-bottom:52px}
-.sec-head h2{font-size:clamp(28px,3.6vw,42px);margin:12px 0 0}
-.sec-head .sub{font-size:17px;color:var(--ink-soft);margin-top:16px;line-height:1.65}
+/* PAIN SECTION */
+.pain-section{padding:90px 0;background:var(--ink)}
+.pain-section .eyebrow{color:#f0a98c}
+.pain-section h2{color:var(--paper);font-size:clamp(28px,3.8vw,44px);margin:12px 0 14px}
+.pain-section .sub{color:#c3beb1;font-size:17px;max-width:34em;line-height:1.65;margin-bottom:52px}
+.pains{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.pain{background:#1b1913;border:1px solid #2a2720;border-radius:var(--radius);padding:28px 30px;transition:.2s;cursor:default}
+.pain:hover{border-color:var(--accent);background:#1f1c15}
+.pain .q{font-family:"Fraunces",serif;font-size:19px;color:var(--paper);margin-bottom:11px;font-weight:500;line-height:1.25}
+.pain .q::before{content:open-quote;color:var(--accent);font-size:26px;line-height:0;vertical-align:-.3em;margin-right:1px}
+.pain p{font-size:13.5px;color:#b8b3a6;line-height:1.7}
+.pain .fix{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12.5px;font-weight:600;color:#f0a98c}
+.pain .fix::before{content:"→ "}
+@media(max-width:720px){.pains{grid-template-columns:1fr}}
+.pain-cta-row{display:flex;gap:12px;margin-top:44px;flex-wrap:wrap}
 
-/* SITUATION */
-#situation{background:var(--ink);color:var(--paper)}
-#situation .eyebrow{color:#f0a98c}
-#situation h2{color:var(--paper)}
-#situation .sub{color:#c3beb1}
-.pains{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.pain{background:#1c1a13;border:1px solid #2e2b1f;border-radius:var(--radius);padding:30px;transition:.2s}
-.pain:hover{border-color:var(--accent);background:#201e16}
-.pain .q{font-family:"Fraunces",serif;font-size:20px;color:var(--paper);margin-bottom:12px;font-weight:500;line-height:1.3}
-.pain .q::before{content:open-quote;color:var(--accent);font-size:28px;line-height:0;vertical-align:-.3em;margin-right:2px}
-.pain p{font-size:14px;color:#b8b3a6;line-height:1.65}
-.pain .fix{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:600;color:#f0a98c;transition:gap .15s}
-.pain .fix::before{content:"→"}
-.pain:hover .fix{gap:10px}
-@media(max-width:760px){.pains{grid-template-columns:1fr}}
+/* DIFFERENCIATEUR */
+.diff-section{padding:90px 0}
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.diff-left h2{font-size:clamp(26px,3.4vw,40px);margin:12px 0 16px}
+.diff-left p{font-size:16px;color:var(--ink-soft);line-height:1.72;margin-bottom:28px}
+.compare{display:flex;flex-direction:column;gap:10px}
+.compare-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.compare-cell{border-radius:10px;padding:13px 16px;font-size:13.5px;line-height:1.5}
+.compare-cell.bad{background:#fff5f3;border:1px solid #fdddd6;color:#7a2e1c}
+.compare-cell.bad::before{content:"✗  ";color:#e0552f;font-weight:700}
+.compare-cell.good{background:var(--leaf-soft);border:1px solid rgba(29,110,86,.2);color:#114034}
+.compare-cell.good::before{content:"✓  ";color:var(--leaf);font-weight:700}
+.compare-header{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:4px}
+.compare-header span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:0 4px}
+.compare-header span:first-child{color:#b13d1c}
+.compare-header span:last-child{color:var(--leaf)}
+@media(max-width:820px){.diff-grid{grid-template-columns:1fr;gap:40px}}
 
 /* PROCESS */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--card);margin-top:0}
-.step{padding:30px 26px;border-right:1px solid var(--line-soft)}
+.process-section{padding:90px 0;background:var(--paper-2)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+.step{padding:28px 24px;border-right:1px solid var(--line-soft);position:relative}
 .step:last-child{border-right:none}
-.step .n{font-family:"Fraunces",serif;font-size:38px;color:var(--accent);font-weight:500;line-height:1}
-.step h3{font-size:17px;margin:12px 0 8px}
-.step p{font-size:14px;color:var(--ink-soft);line-height:1.6}
+.step .n{font-family:"Fraunces",serif;font-size:36px;color:var(--accent);font-weight:500;line-height:1}
+.step h3{font-size:16px;margin:10px 0 7px}
+.step p{font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+.step .step-tag{display:inline-block;margin-top:12px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:6px}
+.step .step-tag.free{background:var(--leaf-soft);color:var(--leaf)}
+.step .step-tag.fast{background:var(--accent-soft);color:var(--accent-deep)}
 @media(max-width:820px){.steps{grid-template-columns:1fr 1fr}.step{border-bottom:1px solid var(--line-soft)}.step:nth-child(odd){border-right:1px solid var(--line-soft)}.step:nth-child(even){border-right:none}}
 @media(max-width:520px){.steps{grid-template-columns:1fr}.step{border-right:none}}
 
 /* FORMULES */
-#formules{background:var(--paper-2)}
-.forms{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.form-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:38px;display:flex;flex-direction:column;position:relative;transition:.2s}
-.form-card.feature{border:1.5px solid var(--accent);box-shadow:0 24px 60px -30px rgba(224,85,47,.5)}
-.form-card .pick{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:16px}
+.formules-section{padding:90px 0}
+.forms{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px;display:flex;flex-direction:column;position:relative;transition:.2s}
+.form-card:hover{border-color:rgba(224,85,47,.3);transform:translateY(-2px)}
+.form-card.feature{border:1.5px solid var(--accent);box-shadow:0 20px 52px -28px rgba(224,85,47,.45)}
+.form-card.feature:hover{transform:translateY(-3px)}
+.form-card .pick{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:14px}
 .form-card.feature .pick{color:var(--accent-deep)}
-.form-card h3{font-size:25px;margin-bottom:8px}
-.form-card .who{font-size:14.5px;color:var(--ink-soft);margin-bottom:24px;line-height:1.6}
-.form-card ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.form-card li{font-size:14px;padding-left:24px;position:relative;line-height:1.5}
+.form-card h3{font-size:24px;margin-bottom:8px}
+.form-card .who{font-size:14px;color:var(--ink-soft);margin-bottom:22px;line-height:1.6}
+.form-card ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:26px}
+.form-card li{font-size:14px;padding-left:22px;position:relative;line-height:1.5;color:var(--ink-soft)}
 .form-card li::before{content:"✓";position:absolute;left:0;color:var(--leaf);font-weight:700}
-.form-card .price{font-size:13px;color:var(--ink-soft);margin-bottom:18px}
+.form-card .price{font-size:13px;color:var(--ink-soft);margin-bottom:16px}
 .form-card .btn{width:100%;justify-content:center;margin-top:auto}
-.badge{position:absolute;top:-13px;right:24px;background:var(--accent);color:#fff;font-size:12px;font-weight:600;padding:5px 16px;border-radius:999px;letter-spacing:.02em}
-@media(max-width:760px){.forms{grid-template-columns:1fr}}
+.badge{position:absolute;top:-12px;right:22px;background:var(--accent);color:#fff;font-size:11.5px;font-weight:600;padding:5px 14px;border-radius:999px}
+@media(max-width:720px){.forms{grid-template-columns:1fr}}
+
+/* PROOF */
+.proof-section{padding:90px 0;background:var(--ink)}
+.proof-section .eyebrow{color:#f0a98c}
+.proof-section h2{color:var(--paper);font-size:clamp(26px,3.5vw,40px);margin:12px 0 52px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.quote{background:#1b1913;border:1px solid #2a2720;border-radius:var(--radius);padding:26px;display:flex;flex-direction:column}
+.quote .stars{color:#f59e0b;font-size:13px;margin-bottom:14px;letter-spacing:1px}
+.quote p{font-size:14px;color:#cfcabd;line-height:1.72;flex:1}
+.quote em{color:#f0a98c;font-style:italic}
+.quote .who{margin-top:18px;padding-top:14px;border-top:1px solid #2a2720;font-size:13px}
+.quote .who b{color:var(--paper);font-weight:600;display:block;margin-bottom:1px}
+.quote .who span{color:#9b968a;font-size:12px}
+.proof-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+.proof-stat{text-align:center;padding:24px 16px;background:#1b1913;border:1px solid #2a2720;border-radius:var(--radius)}
+.proof-stat .v{font-family:"Fraunces",serif;font-size:38px;color:var(--accent);font-weight:500;line-height:1}
+.proof-stat .l{font-size:12.5px;color:#b8b3a6;margin-top:6px;line-height:1.5}
+.logos-row{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:center;margin-top:40px;padding-top:36px;border-top:1px solid #2a2720}
+.logos-row span{font-family:"Fraunces",serif;font-size:17px;color:#5c5850;font-weight:500}
+@media(max-width:720px){.quotes{grid-template-columns:1fr}.proof-stats{grid-template-columns:1fr 1fr}}
 
 /* ACCOMPAGNEMENTS */
-.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.cap{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:.2s}
-.cap:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 12px 30px -16px rgba(224,85,47,.2)}
-.cap .ic{width:44px;height:44px;border-radius:11px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
-.cap h3{font-size:17px;margin-bottom:8px;font-family:"Fraunces",serif;font-weight:500}
-.cap p{font-size:13.5px;color:var(--ink-soft);line-height:1.6}
-.cap .rapid{display:inline-block;margin-top:12px;font-size:11.5px;font-weight:600;color:var(--leaf);background:var(--leaf-soft);padding:4px 10px;border-radius:6px}
+.caps-section{padding:90px 0}
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.cap{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:.2s}
+.cap:hover{transform:translateY(-3px);border-color:rgba(224,85,47,.3);box-shadow:0 10px 28px -14px rgba(224,85,47,.18)}
+.cap .ic{width:42px;height:42px;border-radius:11px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:14px}
+.cap h3{font-size:16px;font-family:"Fraunces",serif;font-weight:500;margin-bottom:7px}
+.cap p{font-size:13px;color:var(--ink-soft);line-height:1.65}
+.cap .rapid{display:inline-block;margin-top:10px;font-size:11px;font-weight:600;color:var(--leaf);background:var(--leaf-soft);padding:3px 9px;border-radius:6px}
 @media(max-width:820px){.caps{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.caps{grid-template-columns:1fr}}
 
-/* PROOF */
-#preuve{background:var(--ink);color:var(--paper)}
-#preuve .eyebrow{color:#f0a98c}
-#preuve h2{color:var(--paper)}
-.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.quote{background:#1c1a13;border:1px solid #2e2b1f;border-radius:var(--radius);padding:28px;display:flex;flex-direction:column}
-.quote p{font-size:14px;color:#cfcabd;line-height:1.7}
-.quote em{color:#f0a98c;font-style:italic}
-.quote .who{margin-top:20px;padding-top:16px;border-top:1px solid #2e2b1f;font-size:13px}
-.quote .who b{color:var(--paper);font-weight:600;display:block;margin-bottom:2px}
-.quote .who span{color:#9b968a}
-.logos{display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:center;margin-top:52px;opacity:.7}
-.logos span{font-family:"Fraunces",serif;font-size:18px;color:#8d887c;font-weight:500}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px}
-.stat .v{font-family:"Fraunces",serif;font-size:42px;color:var(--accent);font-weight:500;line-height:1}
-.stat .l{font-size:12.5px;color:#b8b3a6;margin-top:6px;line-height:1.5}
-@media(max-width:760px){.quotes{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
+/* OBJECTION CRUSHER */
+.obj-section{padding:70px 0;background:var(--paper-2)}
+.obj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.obj-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.obj-item .q{font-size:14.5px;font-weight:600;margin-bottom:10px;color:var(--ink-soft)}
+.obj-item .q::before{content:"? ";color:var(--accent)}
+.obj-item p{font-size:13.5px;color:var(--ink-soft);line-height:1.65}
+@media(max-width:680px){.obj-grid{grid-template-columns:1fr}}
 
-/* TEAM */
-.team{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.member{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
-.member .role{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deep);font-weight:600;margin-bottom:8px}
-.member h3{font-size:24px;margin-bottom:12px}
-.member p{font-size:14px;color:var(--ink-soft);line-height:1.65}
-.member .skills{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
-.member .skills span{font-size:12px;background:var(--paper-2);border:1px solid var(--line-soft);padding:4px 11px;border-radius:999px;color:var(--ink-soft)}
-@media(max-width:680px){.team{grid-template-columns:1fr}}
-
-/* BAND */
-.band{background:var(--accent);color:#fff;border-radius:22px;padding:56px 48px;display:grid;grid-template-columns:1.3fr .7fr;gap:44px;align-items:center}
-.band h2{color:#fff;font-size:clamp(26px,3.2vw,38px)}
-.band p{color:rgba(255,255,255,.8);margin-top:12px;font-size:16px;line-height:1.6}
+/* NEWSLETTER */
+.band-section{padding:0 0 90px}
+.band{background:var(--accent);border-radius:22px;padding:52px 48px;display:grid;grid-template-columns:1.3fr .7fr;gap:44px;align-items:center}
+.band h2{color:#fff;font-size:clamp(24px,3vw,36px)}
 .band .eyebrow{color:rgba(255,255,255,.6);margin-bottom:12px;display:block}
-.band-form{display:flex;gap:8px;background:#fff;padding:7px;border-radius:999px;margin-top:4px}
-.band-form input{flex:1;border:none;outline:none;padding:10px 16px;font-size:15px;font-family:inherit;border-radius:999px;color:var(--ink)}
-.band-form button{background:var(--ink);color:#fff;border:none;padding:10px 22px;border-radius:999px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
-.band-form button:hover{background:#2a271c}
-.band small{display:block;color:rgba(255,255,255,.55);font-size:12px;margin-top:10px}
-@media(max-width:760px){.band{grid-template-columns:1fr;padding:38px 26px}}
+.band p{color:rgba(255,255,255,.78);margin-top:12px;font-size:15px;line-height:1.65}
+.band-form{display:flex;gap:8px;background:#fff;padding:7px;border-radius:999px}
+.band-form input{flex:1;border:none;outline:none;padding:10px 16px;font-size:14px;font-family:inherit;border-radius:999px;color:var(--ink)}
+.band-form button{background:var(--ink);color:#fff;border:none;padding:10px 20px;border-radius:999px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
+.band small{display:block;color:rgba(255,255,255,.5);font-size:11.5px;margin-top:9px}
+@media(max-width:720px){.band{grid-template-columns:1fr;padding:36px 26px}}
 
-/* FINAL */
-.final{text-align:center;padding:100px 0}
-.final h2{font-size:clamp(36px,5vw,58px);margin:16px 0}
-.final p{font-size:18px;color:var(--ink-soft);margin:0 auto 32px;max-width:34em;line-height:1.65}
+/* FINAL CTA */
+.final{padding:100px 0;text-align:center;position:relative;overflow:hidden}
+.final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(224,85,47,.08) 0%,transparent 70%);pointer-events:none}
+.final .eyebrow{margin-bottom:16px;display:block}
+.final h2{font-size:clamp(34px,5vw,56px);margin-bottom:16px}
+.final p{font-size:17px;color:var(--ink-soft);max-width:34em;margin:0 auto 36px;line-height:1.7}
 .final .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.final .perks{margin-top:24px;font-size:13px;color:var(--ink-soft);display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
-.final .perks span{display:inline-flex;align-items:center;gap:7px}
-.final .perks span::before{content:"●";color:var(--leaf);font-size:8px}
+.final .perks{margin-top:22px;font-size:12.5px;color:var(--ink-soft);display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.final .perks span::before{content:"● ";color:var(--leaf);font-size:8px;vertical-align:middle}
 
 /* FOOTER */
-footer{background:var(--ink);color:#b8b3a6;padding:64px 0 32px}
+footer{background:var(--ink);color:#b8b3a6;padding:60px 0 30px}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px}
-footer .logo{color:var(--paper);display:inline-block;margin-bottom:10px}
-footer .foot-tag{font-family:"Fraunces",serif;font-style:italic;color:#cfcabd;font-size:15px;margin-bottom:10px}
-footer p.small{font-size:13px}
-footer h4{color:var(--paper);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;font-weight:600}
-footer ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
+footer .logo{color:var(--paper);font-family:"Fraunces",serif;font-weight:600;font-size:20px;display:inline-block;margin-bottom:10px}
+footer .foot-tag{font-family:"Fraunces",serif;font-style:italic;color:#cfcabd;font-size:14px;margin-bottom:10px}
+footer h4{color:var(--paper);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;font-weight:600}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:13.5px}
 footer a:hover{color:var(--paper)}
-.foot-bottom{margin-top:48px;padding-top:22px;border-top:1px solid #2c2a20;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px}
-@media(max-width:760px){.foot-grid{grid-template-columns:1fr 1fr}}
+.foot-bottom{margin-top:44px;padding-top:20px;border-top:1px solid #2c2a20;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px}
+@media(max-width:720px){.foot-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <div class="wrap nav">
     <a href="index.html" class="logo">Growth<span>appiness</span></a>
@@ -206,49 +248,72 @@ footer a:hover{color:var(--paper)}
       <a href="https://growthappiness.com/blog-v2.html">Blog</a>
     </nav>
     <div class="nav-cta">
-      <a href="situation.html" class="btn btn-ghost">Je me reconnais</a>
-      <a href="https://growthappiness.com/contact.html" class="btn btn-primary">Diagnostic offert</a>
+      <a href="situation.html" class="btn btn-ghost btn-sm">Je me reconnais</a>
+      <a href="https://growthappiness.com/contact.html" class="btn btn-primary btn-sm">Diagnostic offert</a>
     </div>
   </div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">Accompagnement de projets · IA & growth</span>
-      <h1>Vous avez un projet. <em>Quelque chose vous bloque.</em> On leve le frein.</h1>
-      <p class="lead">De l'idee au lancement, on vous accompagne avec les bons outils — l'IA en tete. Vous apprenez a tout faire vous-meme, ou on s'occupe de tout. Vous, vous gardez le cap.</p>
+      <div class="hero-social-proof">
+        <div class="avatars">
+          <span>S</span><span>E</span><span>K</span><span>+</span>
+        </div>
+        <p class="proof-text"><strong>12+ entreprises</strong> accompagnees · Paris & Toulouse</p>
+      </div>
+      <h1>Vous avez un projet.<br><span class="accent-word">Quelque chose vous bloque.</span><br>On leve le frein.</h1>
+      <p class="lead">De l'idee au lancement, on vous accompagne avec les bons outils — l'IA en tete. Vous apprenez a faire vous-meme, ou on s'occupe de tout. Vous, vous gardez le cap.</p>
       <div class="hero-actions">
         <a href="https://growthappiness.com/contact.html" class="btn btn-primary btn-arrow">Reserver mon diagnostic</a>
-        <a href="situation.html" class="btn btn-ghost">C'est pile mon probleme</a>
+        <a href="situation.html" class="btn btn-ghost">C'est mon probleme</a>
       </div>
-      <p class="hero-note"><span class="dot"></span>30 min · sans engagement · sans vente forcee</p>
+      <p class="hero-note"><span class="dot-live"></span>30 min · sans engagement · sans vente forcee</p>
     </div>
-    <aside class="reco">
-      <div class="tag">Comment on demarre</div>
-      <h3>Toujours pareil, toujours simple</h3>
-      <p class="sub-reco">On part de votre projet, jamais d'un pack tout fait.</p>
-      <div class="reco-step"><div class="reco-num">1</div><p><strong>Diagnostic 30 min.</strong> On comprend ou vous en etes et ce qui vous bloque.</p></div>
-      <div class="reco-step"><div class="reco-num">2</div><p><strong>Devis sur-mesure.</strong> Adapte a votre projet et votre budget.</p></div>
-      <div class="reco-step"><div class="reco-num">3</div><p><strong>Vous choisissez.</strong> On vous apprend, ou on fait pour vous.</p></div>
+    <aside class="hero-card">
+      <div class="card-eyebrow">Comment on demarre — toujours</div>
+      <h3>Pareil pour tout le monde. Simple.</h3>
+      <p class="card-sub">On part de votre projet, jamais d'un pack predefini.</p>
+      <div class="step-row"><div class="step-n">1</div><p><strong>Diagnostic 30 min.</strong> On comprend ou vous en etes et ce qui bloque vraiment.</p></div>
+      <div class="step-row"><div class="step-n">2</div><p><strong>Devis sur-mesure.</strong> Sous 48h, adapte a votre projet et votre budget.</p></div>
+      <div class="step-row"><div class="step-n">3</div><p><strong>Vous choisissez.</strong> Apprendre, ou deleger. On s'adapte.</p></div>
+      <div class="card-cta">
+        <span>Gratuit · sans engagement</span>
+        <a href="https://growthappiness.com/contact.html" class="btn btn-primary btn-sm btn-arrow">Reserver</a>
+      </div>
     </aside>
   </div>
 </section>
 
-<div class="strip" aria-hidden="true">
-  <div class="strip-track">
-    <span><b>Strategie IA</b> · Sites & apps · Espaces membres · Formulaires intelligents · <b>Design reseaux sociaux</b> · Newsletters · Automatisation · <b>CRM HubSpot</b> · Formations IA · </span>
-    <span><b>Strategie IA</b> · Sites & apps · Espaces membres · Formulaires intelligents · <b>Design reseaux sociaux</b> · Newsletters · Automatisation · <b>CRM HubSpot</b> · Formations IA · </span>
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="wrap trust-inner">
+    <div class="trust-item"><div class="val">100</div><div class="lbl">Score PageSpeed<br>Google</div></div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><div class="val">x2</div><div class="lbl">Trafic en<br>2 mois</div></div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><div class="val">1 sem.</div><div class="lbl">Pour livrer<br>un site complet</div></div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><div class="val">15+</div><div class="lbl">Ans d'experience<br>growth & IA</div></div>
   </div>
 </div>
 
-<section id="situation">
+<!-- STRIP -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <span><b>Strategie IA</b> · Sites & apps · Espaces membres · Formulaires intelligents · <b>Design reseaux sociaux</b> · Newsletters · Automatisation · <b>CRM HubSpot</b> · Vibe coding · Formations IA · </span>
+    <span><b>Strategie IA</b> · Sites & apps · Espaces membres · Formulaires intelligents · <b>Design reseaux sociaux</b> · Newsletters · Automatisation · <b>CRM HubSpot</b> · Vibe coding · Formations IA · </span>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="pain-section">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Vous vous reconnaissez ?</span>
-      <h2>On l'a vu cent fois. <em>Et a chaque fois, ca se debloque.</em></h2>
-      <p class="sub">Vous avez l'envie et le projet. Ce qui manque, c'est la methode, la vitesse, ou quelqu'un qui prenne le sujet en main avec vous.</p>
-    </div>
+    <span class="eyebrow">Vous vous reconnaissez ?</span>
+    <h2>On l'a vu cent fois.<br><em>Et a chaque fois, ca se debloque.</em></h2>
+    <p class="sub">Vous avez l'envie et le projet. Ce qui manque, c'est la methode, la vitesse, ou quelqu'un qui prenne le sujet en main avec vous.</p>
     <div class="pains">
       <div class="pain">
         <div class="q">J'ai une idee, mais aucune idee par ou commencer.</div>
@@ -262,7 +327,7 @@ footer a:hover{color:var(--paper)}
       </div>
       <div class="pain">
         <div class="q">L'IA m'echappe. Je veux l'utiliser sans m'eparpiller.</div>
-        <p>Trop d'outils, trop de hype, pas de resultat. On vous montre ou l'IA vous fait vraiment gagner, et on l'installe dans vos process.</p>
+        <p>Trop d'outils, trop de hype, pas de resultat. On vous montre ou l'IA vous fait vraiment gagner du temps — et on l'installe dans vos process.</p>
         <a href="https://growthappiness.com/contact.html" class="fix">On rend l'IA utile chez vous</a>
       </div>
       <div class="pain">
@@ -271,31 +336,84 @@ footer a:hover{color:var(--paper)}
         <a href="https://growthappiness.com/contact.html" class="fix">On automatise vos process</a>
       </div>
     </div>
+    <div class="pain-cta-row">
+      <a href="https://growthappiness.com/contact.html" class="btn btn-primary btn-arrow">Reserver mon diagnostic — gratuit</a>
+      <a href="situation.html" class="btn" style="background:transparent;border-color:rgba(255,255,255,.2);color:var(--paper)">Voir toutes les situations</a>
+    </div>
   </div>
 </section>
 
-<section id="process">
+<!-- DIFFERENCIATEUR -->
+<section class="diff-section">
+  <div class="wrap diff-grid">
+    <div class="diff-left">
+      <span class="eyebrow">Pourquoi on est differents</span>
+      <h2>Pas une agence. Pas un freelance. <em>Quelque chose de mieux.</em></h2>
+      <p>On combine l'expertise d'une agence (strategie, design, dev, IA) avec la reactivite et la proximite d'une equipe de 2. On ne disparait pas apres la livraison.</p>
+      <a href="process.html" class="btn btn-ghost btn-arrow">Voir comment on travaille</a>
+    </div>
+    <div>
+      <div class="compare-header">
+        <span>Les autres</span>
+        <span>Growthappiness</span>
+      </div>
+      <div class="compare">
+        <div class="compare-row">
+          <div class="compare-cell bad">Devis en 2 semaines</div>
+          <div class="compare-cell good">Devis sous 48h</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell bad">Site livre en 3 mois</div>
+          <div class="compare-cell good">Site livre en 1 semaine</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell bad">Packs tout faits imposes</div>
+          <div class="compare-cell good">100% sur-mesure</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell bad">L'IA en option payante</div>
+          <div class="compare-cell good">L'IA dans chaque projet</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell bad">Vous dependez d'eux</div>
+          <div class="compare-cell good">Tout vous appartient</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell bad">Interlocuteur qui change</div>
+          <div class="compare-cell good">Audrey & Emma, toujours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
   <div class="wrap">
-    <div class="sec-head">
+    <div style="max-width:36em;margin-bottom:44px">
       <span class="eyebrow">Comment ca marche</span>
-      <h2>Un parcours clair, <em>sans mauvaise surprise.</em></h2>
-      <p class="sub">Pas de formule imposee. On comprend, on chiffre, vous choisissez, on avance ensemble.</p>
+      <h2 style="font-size:clamp(26px,3.4vw,40px);margin:12px 0 14px">Un parcours clair, <em>sans mauvaise surprise.</em></h2>
+      <p style="font-size:16px;color:var(--ink-soft)">Pas de formule imposee. On comprend, on chiffre, vous choisissez, on avance.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="n">01</div><h3>Diagnostic offert</h3><p>30 min pour comprendre votre projet, votre demande et vos contraintes.</p></div>
-      <div class="step"><div class="n">02</div><h3>Devis sur-mesure</h3><p>On chiffre le bon type d'accompagnement, ni plus ni moins.</p></div>
-      <div class="step"><div class="n">03</div><h3>Vous choisissez</h3><p>Vous apprenez a le faire, ou on le fait pour vous. A vous de voir.</p></div>
-      <div class="step"><div class="n">04</div><h3>On avance ensemble</h3><p>Accompagnement, livraison, et un actif qui vous appartient a 100 %.</p></div>
+      <div class="step"><div class="n">01</div><h3>Diagnostic offert</h3><p>30 min pour comprendre votre projet et ce qui bloque vraiment.</p><span class="step-tag free">Gratuit</span></div>
+      <div class="step"><div class="n">02</div><h3>Devis sur-mesure</h3><p>On chiffre exactement ce dont vous avez besoin — sous 48h.</p></div>
+      <div class="step"><div class="n">03</div><h3>Vous choisissez</h3><p>Apprendre a le faire, ou nous laisser faire. Les deux marchent.</p></div>
+      <div class="step"><div class="n">04</div><h3>On avance ensemble</h3><p>Livraison rapide. Tout vous appartient. On reste disponibles.</p><span class="step-tag fast">1 semaine pour un site</span></div>
+    </div>
+    <div style="margin-top:32px;text-align:center">
+      <a href="process.html" class="btn btn-ghost btn-arrow">Voir le detail de chaque etape</a>
     </div>
   </div>
 </section>
 
-<section id="formules">
+<!-- FORMULES -->
+<section class="formules-section">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Deux facons d'etre accompagne</span>
-      <h2>Vous voulez <em>apprendre</em>, ou vous voulez <em>deleguer</em> ?</h2>
-      <p class="sub">Les deux sont possibles, et l'une peut mener a l'autre. On choisit ensemble au diagnostic.</p>
+    <div style="max-width:36em;margin-bottom:44px">
+      <span class="eyebrow">Deux facons d'avancer</span>
+      <h2 style="font-size:clamp(26px,3.4vw,40px);margin:12px 0 14px">Vous voulez <em>apprendre</em>, ou vous voulez <em>deleguer</em> ?</h2>
+      <p style="font-size:16px;color:var(--ink-soft)">Les deux sont possibles. L'une peut mener a l'autre. On decide ensemble au diagnostic.</p>
     </div>
     <div class="forms">
       <div class="form-card">
@@ -304,8 +422,8 @@ footer a:hover{color:var(--paper)}
         <p class="who">Pour celles et ceux qui veulent monter en competence et rester maitres de leur projet.</p>
         <ul>
           <li>On vous montre tout, etape par etape</li>
-          <li>Les bons outils IA installes et configures (Figma, Canva, CRM...)</li>
-          <li>Prompts, workflows et agents adaptes a votre metier</li>
+          <li>Les bons outils IA installes et configures</li>
+          <li>Prompts et workflows adaptes a votre metier</li>
           <li>Formation jusqu'a l'autonomie reelle</li>
           <li>Vous gardez la main sur tout, pour de bon</li>
         </ul>
@@ -331,84 +449,83 @@ footer a:hover{color:var(--paper)}
   </div>
 </section>
 
-<section id="accompagnements">
+<!-- PROOF -->
+<section class="proof-section" id="preuve">
   <div class="wrap">
-    <div class="sec-head">
+    <span class="eyebrow">Ils nous ont fait confiance</span>
+    <h2>Des resultats reels, <em>pas des promesses.</em></h2>
+    <div class="quotes">
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>Travailler avec Audrey, c'est avant tout une <em>rencontre marquante</em>. Une competence rare, une reactivite impressionnante, et une vraie capacite a comprendre vite les enjeux. Un accompagnement rigoureux, bienveillant et concret.</p>
+        <div class="who"><b>Sonia Maouchi</b><span>Directrice Commerciale & Marketing, Adomos</span></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>Un accompagnement de qualite, marque par la <em>disponibilite et la proximite</em>. Elles ont vite compris notre secteur complexe. J'ai pu integrer l'IA dans mon quotidien de maniere pragmatique.</p>
+        <div class="who"><b>Emeline Bernard</b><span>Clinical Project Manager, Axiodis CRO</span></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>J'apprecie particulierement <em>l'accompagnement sur mesure</em> : une grande disponibilite, une vraie force de proposition. Un partenaire de confiance que je recommande sans hesiter.</p>
+        <div class="who"><b>Khadija Ben Akrout</b><span>Solution Sales Specialist, Axiodis CRO</span></div>
+      </div>
+    </div>
+    <div class="proof-stats">
+      <div class="proof-stat"><div class="v">100</div><div class="l">Score SEO technique · Google PageSpeed</div></div>
+      <div class="proof-stat"><div class="v">x2</div><div class="l">Trafic en 2 mois · strategie de contenus</div></div>
+      <div class="proof-stat"><div class="v">1 sem.</div><div class="l">Pour livrer un site complet</div></div>
+      <div class="proof-stat"><div class="v">+RDV</div><div class="l">Generes · CRM + automatisation</div></div>
+    </div>
+    <div class="logos-row">
+      <span>Adomos</span><span>Goodalgo</span><span>Oxurion</span><span>Axiodis CRO</span><span>Club Adomos</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOMPAGNEMENTS -->
+<section class="caps-section" id="accompagnements">
+  <div class="wrap">
+    <div style="max-width:36em;margin-bottom:44px">
       <span class="eyebrow">Nos accompagnements</span>
-      <h2>Bien plus qu'un site. <em>Tout ce qui fait avancer votre projet.</em></h2>
-      <p class="sub">Chaque brique resout un probleme concret. On active seulement celles dont vous avez besoin.</p>
+      <h2 style="font-size:clamp(26px,3.4vw,40px);margin:12px 0 14px">Bien plus qu'un site. <em>Tout ce qui fait avancer votre projet.</em></h2>
+      <p style="font-size:16px;color:var(--ink-soft)">Chaque brique resout un probleme concret. On active seulement celles dont vous avez besoin.</p>
     </div>
     <div class="caps">
       <div class="cap"><div class="ic">🧭</div><h3>Accompagnement strategique IA</h3><p>Y voir clair sur ou l'IA vous fait gagner du temps et de l'argent, sans gadget.</p></div>
-      <div class="cap"><div class="ic">⚡</div><h3>Vibe coding</h3><p>Site, app, espace membre, formulaires intelligents. Code sur-mesure, branche a votre IA.<span class="rapid">En 1 semaine, c'est possible</span></p></div>
+      <div class="cap"><div class="ic">⚡</div><h3>Vibe coding</h3><p>Site, app, espace membre, formulaires intelligents. Code sur-mesure, branche a votre IA.<span class="rapid">En 1 semaine</span></p></div>
       <div class="cap"><div class="ic">🎨</div><h3>Design reseaux sociaux</h3><p>Carousels LinkedIn & Instagram qui sortent du lot et donnent envie de vous suivre.</p></div>
       <div class="cap"><div class="ic">✉️</div><h3>Newsletters</h3><p>Creation, mise en place et contenu. On batit le lien direct avec votre audience.</p></div>
       <div class="cap"><div class="ic">⚙️</div><h3>Implementation IA</h3><p>On installe l'IA dans vos process pour supprimer les taches repetitives.</p></div>
       <div class="cap"><div class="ic">🔗</div><h3>CRM HubSpot</h3><p>Implementation et organisation de votre suivi client, de bout en bout.</p></div>
     </div>
-    <div style="margin-top:36px;display:flex;gap:12px;flex-wrap:wrap">
+    <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
       <a href="https://growthappiness.com/contact.html" class="btn btn-primary btn-arrow">Voir lequel est fait pour vous</a>
       <a href="https://growthappiness.com/guides-ia.html" class="btn btn-ghost">Formations IA</a>
     </div>
   </div>
 </section>
 
-<section id="preuve">
+<!-- OBJECTIONS -->
+<section class="obj-section">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Ils nous ont fait confiance</span>
-      <h2>Des resultats reels, <em>pas des promesses.</em></h2>
+    <div style="max-width:34em;margin-bottom:36px">
+      <span class="eyebrow">On repond franchement</span>
+      <h2 style="font-size:clamp(24px,3vw,36px);margin:12px 0">Les questions qu'on nous pose <em>toujours.</em></h2>
     </div>
-    <div class="quotes">
-      <div class="quote">
-        <p>Travailler avec Audrey, c'est avant tout une <em>rencontre marquante</em>. Une competence rare, une reactivite impressionnante, et une vraie capacite a comprendre vite les enjeux. Un accompagnement rigoureux, bienveillant et concret.</p>
-        <div class="who"><b>Sonia Maouchi</b><span>Directrice Commerciale & Marketing, Adomos</span></div>
-      </div>
-      <div class="quote">
-        <p>Un accompagnement de qualite, marque par la <em>disponibilite et la proximite</em>. Elles ont vite compris notre secteur complexe et m'ont apporte des solutions concretes. J'ai pu integrer l'IA dans mon quotidien de maniere pragmatique.</p>
-        <div class="who"><b>Emeline Bernard</b><span>Clinical Project Manager, Axiodis CRO</span></div>
-      </div>
-      <div class="quote">
-        <p>J'apprecie particulierement <em>l'accompagnement sur mesure</em> : une grande disponibilite, une vraie force de proposition. Son expertise et son sens du conseil en font un partenaire de confiance que je recommande sans hesiter.</p>
-        <div class="who"><b>Khadija Ben Akrout</b><span>Solution Sales Specialist, Axiodis CRO</span></div>
-      </div>
-    </div>
-    <div class="logos">
-      <span>Adomos</span><span>Goodalgo</span><span>Oxurion</span><span>Axiodis CRO</span><span>Club Adomos</span>
-    </div>
-    <div class="stats">
-      <div class="stat"><div class="v">100</div><div class="l">Score SEO technique · Google PageSpeed</div></div>
-      <div class="stat"><div class="v">x2</div><div class="l">Trafic en 2 mois · strategie de contenus</div></div>
-      <div class="stat"><div class="v">1 sem.</div><div class="l">Pour livrer un site complet</div></div>
-      <div class="stat"><div class="v">+RDV</div><div class="l">Generes · CRM + automatisation</div></div>
+    <div class="obj-grid">
+      <div class="obj-item"><div class="q">C'est vraiment gratuit, le diagnostic ?</div><p>Oui, sans condition. 30 minutes, sans relance, sans engagement. Si on n'est pas les bons, on vous le dit — et on vous oriente.</p></div>
+      <div class="obj-item"><div class="q">Ca coute combien ?</div><p>Ca depend de votre projet. Pas de pack impose. On chiffre exactement ce dont vous avez besoin apres le diagnostic. Toujours transparent, jamais de surprise.</p></div>
+      <div class="obj-item"><div class="q">Je garde la main sur ce qui est cree ?</div><p>A 100 %. Tout ce qu'on construit vous appartient. Pas de dependance, pas d'abonnement impose, pas de contrat d'exclusivite.</p></div>
+      <div class="obj-item"><div class="q">Je ne suis pas a Paris ou Toulouse ?</div><p>Pas de probleme. On travaille 100% remote avec de nombreux clients. La ville n'a aucun impact sur la qualite de l'accompagnement.</p></div>
+      <div class="obj-item"><div class="q">Combien de temps pour un site ?</div><p>En moyenne une semaine pour un site complet, grace au vibe coding et a l'IA. Un calendrier est donne des le devis — et on le tient.</p></div>
+      <div class="obj-item"><div class="q">J'ai deja commence avec quelqu'un d'autre ?</div><p>On peut prendre la suite, auditer ce qui a ete fait, ou completer ce qui manque. On explique au diagnostic ce qui est possible.</p></div>
     </div>
   </div>
 </section>
 
-<section id="equipe">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Powered by AI · pilotee par des humains</span>
-      <h2>L'equipe qui <em>fait decoller</em> votre business.</h2>
-    </div>
-    <div class="team">
-      <div class="member">
-        <div class="role">CEO & Founder</div>
-        <h3>Audrey Delval</h3>
-        <p>15+ ans en Growth Marketing — sante, energie, retail. Specialisee B2B, <em>vibe codeuse</em> : elle code en dialoguant avec l'IA, et vraie geek cote tech.</p>
-        <div class="skills"><span>Vibe coding</span><span>Developpement</span><span>CRM</span><span>Automatisation</span><span>Securite</span><span>Strategie digitale</span><span>Expertise IA</span></div>
-      </div>
-      <div class="member">
-        <div class="role">Growth Marketeur</div>
-        <h3>Emma Barthelemy</h3>
-        <p>Experte design, B2C et photographie. Contenu, reseaux sociaux et direction artistique — pour que votre marque ait une vraie voix.</p>
-        <div class="skills"><span>Design</span><span>B2C</span><span>Photographie</span><span>Social media</span><span>Brand</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0;padding-bottom:90px">
+<!-- NEWSLETTER -->
+<section class="band-section">
   <div class="wrap">
     <div class="band">
       <div>
@@ -427,6 +544,7 @@ footer a:hover{color:var(--paper)}
   </div>
 </section>
 
+<!-- FINAL CTA -->
 <section class="final">
   <div class="wrap">
     <span class="eyebrow">Prochain pas</span>
@@ -440,13 +558,14 @@ footer a:hover{color:var(--paper)}
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="foot-grid">
       <div>
         <a href="index.html" class="logo">Growth<span style="color:var(--accent)">appiness</span></a>
         <p class="foot-tag">Grow smarter, live happier.</p>
-        <p class="small">Paris & Toulouse · Remote partout</p>
+        <p style="font-size:13px">Paris & Toulouse · Remote partout</p>
       </div>
       <div>
         <h4>Site</h4>
