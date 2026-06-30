@@ -52,10 +52,13 @@ a{text-decoration:none;color:inherit}
 .btn-outline-lg{font-size:16px;padding:14px 30px}
 
 /* ─── HERO ───────────────────────────────────────────── */
-.hero-outer{height:160vh;background:var(--black);position:relative;overflow:hidden}
-.hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(224,85,47,.18) 0%,transparent 70%);filter:blur(80px);pointer-events:none;top:-100px;left:50%;transform:translateX(-50%)}
-.hero-glow-2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(29,110,86,.12) 0%,transparent 70%);filter:blur(60px);pointer-events:none;bottom:20%;right:10%}
+.hero-outer{height:220vh;background:#050508;position:relative}
+.hero-animated-bg{position:sticky;top:0;height:100vh;pointer-events:none;overflow:hidden;z-index:0;margin-bottom:-100vh}
+.hero-animated-bg::before{content:'';position:absolute;width:900px;height:700px;border-radius:50%;right:-150px;top:-100px;background:radial-gradient(ellipse,rgba(80,0,200,.28) 0%,transparent 65%);filter:blur(60px);animation:bgFloat 10s ease-in-out infinite alternate}
+.hero-animated-bg::after{content:'';position:absolute;width:600px;height:500px;border-radius:50%;left:-100px;bottom:0;background:radial-gradient(ellipse,rgba(224,85,47,.1) 0%,transparent 65%);filter:blur(80px)}
+@keyframes bgFloat{from{transform:translateY(0) scale(1)}to{transform:translateY(-60px) scale(1.08)}}
 .hero-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;z-index:2}
+.hero-content{display:flex;flex-direction:column;align-items:center;will-change:transform,opacity}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:40px;padding:6px 16px;font-size:12px;color:rgba(255,255,255,.7);letter-spacing:.06em;margin-bottom:28px;font-weight:500}
 .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:pulse-dot 2s ease-in-out infinite}
 @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.3)}}
@@ -65,48 +68,27 @@ a{text-decoration:none;color:inherit}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:48px}
 .hero-social{display:flex;align-items:center;gap:10px}
 .avatars{display:flex}
-.avatars .av{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid var(--black);margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;overflow:hidden;flex-shrink:0}
+.avatars .av{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.1);margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;overflow:hidden;flex-shrink:0}
 .avatars .av:first-child{margin-left:0}
 .hero-social-text{font-size:13px;color:rgba(255,255,255,.5)}
 .hero-social-text strong{color:rgba(255,255,255,.85);font-weight:500}
-
-/* Hero mockup */
-.hero-mockup-outer{position:relative;z-index:10;margin-top:-40vh;padding:0 24px;display:flex;justify-content:center}
-.mac-window{width:100%;max-width:1000px;border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 40px 120px rgba(0,0,0,.6),0 0 80px rgba(224,85,47,.08);background:#111}
-.mac-bar{display:flex;align-items:center;gap:8px;padding:14px 20px;background:#1a1a1a;border-bottom:1px solid rgba(255,255,255,.06)}
-.mac-dot{width:13px;height:13px;border-radius:50%;flex-shrink:0}
-.mac-red{background:#ff5f57}.mac-yellow{background:#febc2e}.mac-green{background:#28c840}
-.mac-url-bar{margin-left:16px;flex:1;max-width:340px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:7px;padding:5px 12px;font-size:12px;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:6px}
-.mac-body{display:flex;height:480px}
-.dash-sidebar{width:160px;flex-shrink:0;background:#131313;border-right:1px solid rgba(255,255,255,.06);padding:20px 0}
-.dash-logo{font-family:'Fraunces',serif;font-size:14px;font-weight:600;color:var(--white);padding:0 20px 24px;letter-spacing:-.02em}
-.dash-logo span{color:var(--accent)}
-.dash-nav{list-style:none}
-.dash-nav-item{font-size:12px;color:rgba(255,255,255,.45);padding:9px 20px;cursor:default;display:flex;align-items:center;gap:8px;transition:color .15s}
-.dash-nav-item.active{color:var(--accent);background:rgba(224,85,47,.08);border-right:2px solid var(--accent);font-weight:500}
-.dash-nav-item .ni{font-size:14px}
-.dash-main{flex:1;padding:24px;overflow:hidden;background:#0e0e0e}
-.dash-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-.dash-title{font-size:13px;font-weight:500;color:rgba(255,255,255,.8)}
-.dash-live{font-size:11px;color:var(--leaf);background:rgba(29,110,86,.12);padding:3px 10px;border-radius:20px;display:flex;align-items:center;gap:5px}
-.dash-live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--leaf)}
-.dash-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
-.dash-kpi{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px 14px}
-.dash-kpi-label{font-size:10px;color:rgba(255,255,255,.4);margin-bottom:6px;letter-spacing:.04em}
-.dash-kpi-val{font-size:20px;font-weight:600;color:var(--white);font-family:'Fraunces',serif;margin-bottom:4px}
-.dash-kpi-delta{font-size:10px;color:var(--leaf)}
-.dash-chart-wrap{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px;margin-bottom:14px}
-.dash-chart-label{font-size:11px;font-weight:500;color:rgba(255,255,255,.6);margin-bottom:10px}
-.dash-chart-svg{width:100%;height:80px;display:block}
-.dash-chart-months{display:flex;justify-content:space-between;font-size:9px;color:rgba(255,255,255,.25);margin-top:5px}
-.dash-table-wrap{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;overflow:hidden}
-.dash-table-head{display:grid;grid-template-columns:1fr 56px 56px 70px;gap:4px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.06);font-size:9px;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:.06em;text-transform:uppercase}
-.dash-table-row{display:grid;grid-template-columns:1fr 56px 56px 70px;gap:4px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;color:rgba(255,255,255,.65);align-items:center}
-.dash-table-row:last-child{border-bottom:none}
-.dtr-pos{font-weight:700;color:var(--accent)}
-.dtr-up{color:var(--leaf);font-weight:500}
-.dtr-clicks{color:rgba(255,255,255,.4)}
-
+.hero-mockup-outer{position:relative;z-index:10;margin-top:-52vh;padding:0 32px;display:flex;justify-content:center;will-change:transform}
+.laptop{width:100%;max-width:960px;position:relative;filter:drop-shadow(0 48px 96px rgba(0,0,0,.8)) drop-shadow(0 0 60px rgba(80,0,200,.12))}
+.laptop-screen-wrap{background:#1c1c1e;border-radius:20px 20px 0 0;padding:32px 28px 0;border:1.5px solid rgba(255,255,255,.14);border-bottom:none;position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.laptop-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:180px;height:28px;background:#1c1c1e;border-radius:0 0 18px 18px;border:1.5px solid rgba(255,255,255,.1);border-top:none;display:flex;align-items:center;justify-content:center;z-index:2}
+.laptop-camera{width:9px;height:9px;border-radius:50%;background:#2a2a2a;border:1px solid rgba(255,255,255,.08)}
+.laptop-display{background:#0e0e0e;border-radius:4px 4px 0 0;overflow:hidden;aspect-ratio:16/10}
+.laptop-hinge{height:8px;background:linear-gradient(to bottom,#2c2c2e,#1e1e20);border-left:1.5px solid rgba(255,255,255,.1);border-right:1.5px solid rgba(255,255,255,.1)}
+.laptop-body{background:linear-gradient(170deg,#2c2c2e 0%,#202022 50%,#1a1a1c 100%);border-radius:0 0 20px 20px;padding:22px 44px 26px;border:1.5px solid rgba(255,255,255,.1);border-top:none;position:relative}
+.laptop-body::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:3px;background:rgba(255,255,255,.04);border-radius:0 0 4px 4px}
+.laptop-keyboard-wrap{background:rgba(0,0,0,.35);border-radius:8px;padding:12px 8px 10px;margin-bottom:14px}
+.keyboard-row{display:flex;gap:3px;margin-bottom:3px;justify-content:center}
+.keyboard-row:last-child{margin-bottom:0}
+.key{height:14px;background:rgba(255,255,255,.07);border-radius:3px;flex:1;max-width:30px;border:1px solid rgba(255,255,255,.04)}
+.key.wide{max-width:50px}.key.wider{max-width:70px}.key.space{max-width:240px;flex:none}
+.laptop-trackpad-wrap{display:flex;justify-content:center}
+.laptop-trackpad{width:160px;height:44px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px}
+.laptop-foot{height:4px;background:linear-gradient(to bottom,#111,#0a0a0a);border-radius:0 0 4px 4px;margin:0 40px}
 /* ─── TRUST/AWARDS STRIP ─────────────────────────────── */
 .trust-strip{background:var(--black);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:28px 0}
 .trust-strip-inner{max-width:var(--maxw);margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:48px;justify-content:center;flex-wrap:wrap}
@@ -332,123 +314,75 @@ a,button,[role="button"]{cursor:none}
 
 <!-- ─── HERO ─────────────────────────────────────────── -->
 <div class="hero-outer">
-  <div class="hero-glow"></div>
-  <div class="hero-glow-2"></div>
-
-  <div class="hero-sticky">
-    <div class="hero-badge">
-      <span class="hero-badge-dot"></span>
-      #1 Agence Web + IA — Paris &amp; Toulouse
-    </div>
-    <h1>Un site web.<br><em>100% de performance.</em></h1>
-    <p class="hero-lead">Audit gratuit, design sur-mesure et IA intégrée. Pour que votre site devienne votre meilleur commercial — visible, rapide, et qui convertit.</p>
-    <div class="hero-actions">
-      <a href="contact.html" class="btn-primary btn-primary-lg">Réserver mon audit gratuit →</a>
-      <a href="process.html" class="btn-outline btn-outline-lg">Comment ça marche</a>
-    </div>
-    <div class="hero-social">
-      <div class="avatars">
-        <div class="av">M</div>
-        <div class="av">S</div>
-        <div class="av">L</div>
-        <div class="av">A</div>
+  <div class="hero-animated-bg"></div>
+  <div class="hero-sticky hero" id="hero-text-wrap">
+    <div class="hero-content" id="hero-content">
+      <div class="hero-badge"><span class="hero-badge-dot"></span>#1 Agence Web + IA — Paris &amp; Toulouse</div>
+      <h1>Un site web.<br><em>100% de performance.</em></h1>
+      <p class="hero-lead">Audit gratuit, design sur-mesure et IA intégrée. Pour que votre site devienne votre meilleur commercial — visible, rapide, et qui convertit.</p>
+      <div class="hero-actions">
+        <a href="contact.html" class="btn-primary btn-primary-lg">Réserver mon audit gratuit →</a>
+        <a href="process.html" class="btn-outline btn-outline-lg">Comment ça marche</a>
       </div>
-      <span class="hero-social-text"><strong>50+ clients</strong> nous font déjà confiance</span>
+      <div class="hero-social">
+        <div class="avatars"><div class="av">M</div><div class="av">S</div><div class="av">L</div><div class="av">A</div></div>
+        <span class="hero-social-text"><strong>50+ clients</strong> nous font déjà confiance</span>
+      </div>
     </div>
   </div>
-
-  <!-- App mockup floats up as you scroll -->
   <div class="hero-mockup-outer" id="hero-mockup">
-    <div class="mac-window">
-      <div class="mac-bar">
-        <span class="mac-dot mac-red"></span>
-        <span class="mac-dot mac-yellow"></span>
-        <span class="mac-dot mac-green"></span>
-        <div class="mac-url-bar">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-          analytics.growthappiness.com
-        </div>
-      </div>
-      <div class="mac-body">
-        <div class="dash-sidebar">
-          <div class="dash-logo">G<span>rowth</span></div>
-          <ul class="dash-nav">
-            <li class="dash-nav-item active"><span class="ni">📊</span> Vue d'ensemble</li>
-            <li class="dash-nav-item"><span class="ni">📈</span> Trafic</li>
-            <li class="dash-nav-item"><span class="ni">🎯</span> Conversions</li>
-            <li class="dash-nav-item"><span class="ni">🔍</span> SEO</li>
-            <li class="dash-nav-item"><span class="ni">⚡</span> Vitesse</li>
-            <li class="dash-nav-item"><span class="ni">🤖</span> IA</li>
-          </ul>
-        </div>
-        <div class="dash-main">
-          <div class="dash-topbar">
-            <div class="dash-title">Vue d'ensemble — 12 derniers mois</div>
-            <div class="dash-live">En direct</div>
-          </div>
-          <div class="dash-kpis">
-            <div class="dash-kpi">
-              <div class="dash-kpi-label">Visiteurs / mois</div>
-              <div class="dash-kpi-val">12 847</div>
-              <div class="dash-kpi-delta">↑ +127%</div>
+    <div class="laptop">
+      <div class="laptop-screen-wrap">
+        <div class="laptop-notch"><div class="laptop-camera"></div></div>
+        <div class="laptop-display">
+          <div style="display:flex;height:100%;background:#0e0e0e">
+            <div style="width:148px;flex-shrink:0;background:#131313;border-right:1px solid rgba(255,255,255,.06);padding:18px 0">
+              <div style="font-family:Fraunces,serif;font-size:13px;font-weight:600;color:#fff;padding:0 16px 18px">Growth<span style="color:#e0552f">.</span></div>
+              <div style="font-size:11px;color:#e0552f;background:rgba(224,85,47,.08);border-right:2px solid #e0552f;padding:8px 16px;font-weight:500;font-family:Inter,sans-serif">📊 Vue d'ensemble</div>
+              <div style="font-size:11px;color:rgba(255,255,255,.4);padding:8px 16px;font-family:Inter,sans-serif">📈 Trafic</div>
+              <div style="font-size:11px;color:rgba(255,255,255,.4);padding:8px 16px;font-family:Inter,sans-serif">🎯 Conversions</div>
+              <div style="font-size:11px;color:rgba(255,255,255,.4);padding:8px 16px;font-family:Inter,sans-serif">🔍 SEO</div>
+              <div style="font-size:11px;color:rgba(255,255,255,.4);padding:8px 16px;font-family:Inter,sans-serif">⚡ Vitesse</div>
             </div>
-            <div class="dash-kpi">
-              <div class="dash-kpi-label">Taux de conversion</div>
-              <div class="dash-kpi-val">4,3%</div>
-              <div class="dash-kpi-delta">↑ +89%</div>
-            </div>
-            <div class="dash-kpi">
-              <div class="dash-kpi-label">PageSpeed Score</div>
-              <div class="dash-kpi-val">100</div>
-              <div class="dash-kpi-delta">↑ Top 1%</div>
-            </div>
-            <div class="dash-kpi">
-              <div class="dash-kpi-label">Leads générés</div>
-              <div class="dash-kpi-val">342</div>
-              <div class="dash-kpi-delta">↑ +203%</div>
-            </div>
-          </div>
-          <div class="dash-chart-wrap">
-            <div class="dash-chart-label">Trafic organique</div>
-            <svg class="dash-chart-svg" viewBox="0 0 600 80" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#e0552f" stop-opacity="0.2"/>
-                  <stop offset="100%" stop-color="#e0552f" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <line x1="0" y1="20" x2="600" y2="20" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
-              <line x1="0" y1="40" x2="600" y2="40" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
-              <line x1="0" y1="60" x2="600" y2="60" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
-              <path d="M0,72 C60,70 100,64 160,56 C200,50 240,44 300,34 C350,26 400,18 460,10 C500,5 550,3 600,2 L600,80 L0,80 Z" fill="url(#cg)"/>
-              <path d="M0,72 C60,70 100,64 160,56 C200,50 240,44 300,34 C350,26 400,18 460,10 C500,5 550,3 600,2" fill="none" stroke="#e0552f" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="600" cy="2" r="3" fill="#e0552f"/>
-            </svg>
-            <div class="dash-chart-months">
-              <span>Jan</span><span>Fév</span><span>Mar</span><span>Avr</span><span>Mai</span><span>Juin</span><span>Juil</span><span>Août</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Déc</span>
-            </div>
-          </div>
-          <div class="dash-table-wrap">
-            <div class="dash-table-head">
-              <span>Mot-clé</span><span>Pos.</span><span>Évol.</span><span>Clics</span>
-            </div>
-            <div class="dash-table-row">
-              <span>site web artisan bordeaux</span><span class="dtr-pos">#1</span><span class="dtr-up">↑ 18</span><span class="dtr-clicks">847</span>
-            </div>
-            <div class="dash-table-row">
-              <span>agence web ia paris</span><span class="dtr-pos">#2</span><span class="dtr-up">↑ 11</span><span class="dtr-clicks">612</span>
-            </div>
-            <div class="dash-table-row">
-              <span>refonte site pme rapide</span><span class="dtr-pos">#3</span><span class="dtr-up">↑ 9</span><span class="dtr-clicks">431</span>
+            <div style="flex:1;padding:18px;overflow:hidden">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,.8);font-family:Inter,sans-serif">Vue d'ensemble — 12 derniers mois</span>
+                <span style="font-size:10px;color:#1d6e56;background:rgba(29,110,86,.12);padding:3px 9px;border-radius:20px;font-family:Inter,sans-serif">● En direct</span>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px">
+                <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:10px"><div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:4px;font-family:Inter,sans-serif">Visiteurs/mois</div><div style="font-size:17px;font-weight:600;color:#fff;font-family:Fraunces,serif">12 847</div><div style="font-size:9px;color:#1d6e56;font-family:Inter,sans-serif">↑ +127%</div></div>
+                <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:10px"><div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:4px;font-family:Inter,sans-serif">Conversion</div><div style="font-size:17px;font-weight:600;color:#fff;font-family:Fraunces,serif">4,3%</div><div style="font-size:9px;color:#1d6e56;font-family:Inter,sans-serif">↑ +89%</div></div>
+                <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:10px"><div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:4px;font-family:Inter,sans-serif">PageSpeed</div><div style="font-size:17px;font-weight:600;color:#fff;font-family:Fraunces,serif">100</div><div style="font-size:9px;color:#1d6e56;font-family:Inter,sans-serif">↑ Top 1%</div></div>
+                <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:10px"><div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:4px;font-family:Inter,sans-serif">Leads</div><div style="font-size:17px;font-weight:600;color:#fff;font-family:Fraunces,serif">342</div><div style="font-size:9px;color:#1d6e56;font-family:Inter,sans-serif">↑ +203%</div></div>
+              </div>
+              <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px;margin-bottom:8px">
+                <div style="font-size:10px;font-weight:500;color:rgba(255,255,255,.6);margin-bottom:6px;font-family:Inter,sans-serif">Trafic organique</div>
+                <svg viewBox="0 0 600 60" style="width:100%;height:48px;display:block" preserveAspectRatio="none"><defs><linearGradient id="cg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e0552f" stop-opacity="0.2"/><stop offset="100%" stop-color="#e0552f" stop-opacity="0"/></linearGradient></defs><path d="M0,54 C80,52 160,42 240,30 C300,21 360,13 440,7 C500,3 555,1 600,1 L600,60 L0,60 Z" fill="url(#cg2)"/><path d="M0,54 C80,52 160,42 240,30 C300,21 360,13 440,7 C500,3 555,1 600,1" fill="none" stroke="#e0552f" stroke-width="2"/><circle cx="600" cy="1" r="3" fill="#e0552f"/></svg>
+              </div>
+              <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;overflow:hidden">
+                <div style="display:grid;grid-template-columns:1fr 44px 44px 56px;padding:6px 10px;background:rgba(255,255,255,.02);font-size:8px;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:.06em;text-transform:uppercase;font-family:Inter,sans-serif"><span>Mot-clé</span><span>Pos.</span><span>Évol.</span><span>Clics</span></div>
+                <div style="display:grid;grid-template-columns:1fr 44px 44px 56px;padding:6px 10px;border-top:1px solid rgba(255,255,255,.04);font-size:10px;font-family:Inter,sans-serif;color:rgba(255,255,255,.65)"><span>site web artisan bordeaux</span><span style="color:#e0552f;font-weight:700">#1</span><span style="color:#1d6e56">↑ 18</span><span style="color:rgba(255,255,255,.4)">847</span></div>
+                <div style="display:grid;grid-template-columns:1fr 44px 44px 56px;padding:6px 10px;border-top:1px solid rgba(255,255,255,.04);font-size:10px;font-family:Inter,sans-serif;color:rgba(255,255,255,.65)"><span>agence web ia paris</span><span style="color:#e0552f;font-weight:700">#2</span><span style="color:#1d6e56">↑ 11</span><span style="color:rgba(255,255,255,.4)">612</span></div>
+                <div style="display:grid;grid-template-columns:1fr 44px 44px 56px;padding:6px 10px;border-top:1px solid rgba(255,255,255,.04);font-size:10px;font-family:Inter,sans-serif;color:rgba(255,255,255,.65)"><span>refonte site pme rapide</span><span style="color:#e0552f;font-weight:700">#3</span><span style="color:#1d6e56">↑ 9</span><span style="color:rgba(255,255,255,.4)">431</span></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="laptop-hinge"></div>
+      <div class="laptop-body">
+        <div class="laptop-keyboard-wrap">
+          <div class="keyboard-row"><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key wider"></div></div>
+          <div class="keyboard-row"><div class="key wide"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key wide"></div></div>
+          <div class="keyboard-row"><div class="key wider"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key wider"></div></div>
+          <div class="keyboard-row"><div class="key wide"></div><div class="key wide"></div><div class="key space"></div><div class="key wide"></div><div class="key wide"></div></div>
+        </div>
+        <div class="laptop-trackpad-wrap"><div class="laptop-trackpad"></div></div>
+      </div>
+      <div class="laptop-foot"></div>
     </div>
   </div>
-</div>
-
-<!-- ─── TRUST STRIP ───────────────────────────────────── -->
+</div><!-- ─── TRUST STRIP ───────────────────────────────────── -->
 <div class="trust-strip">
   <div class="trust-strip-inner">
     <span class="trust-label">Performances mesurées</span>
@@ -1104,12 +1038,13 @@ a,button,[role="button"]{cursor:none}
     else nav.classList.remove('scrolled');
   },{passive:true});
 
-  /* HERO MOCKUP PARALLAX */
-  var mockup=document.getElementById('hero-mockup');
+  /* HERO: TEXT FADE + LAPTOP PARALLAX */
+  var heroContent=document.getElementById('hero-content');
+  var heroMockup=document.getElementById('hero-mockup');
   window.addEventListener('scroll',function(){
-    if(!mockup)return;
-    var rate=window.scrollY*0.3;
-    mockup.style.transform='translateY('+(-rate)+'px)';
+    var y=window.scrollY,vh2=window.innerHeight;
+    if(heroContent){var fp=Math.min(y/(vh2*.45),1);heroContent.style.opacity=1-fp;heroContent.style.transform='translateY('+(y*.12)+'px)';}
+    if(heroMockup){heroMockup.style.transform='translateY('+(-y*.5)+'px)';}
   },{passive:true});
 
   /* SCROLL REVEAL */
